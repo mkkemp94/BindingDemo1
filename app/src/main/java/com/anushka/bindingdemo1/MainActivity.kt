@@ -32,7 +32,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayGreeting() {
-        val message = "Hello! " + binding.nameEditText.text
-        binding.greetingTextView.text = message
+        binding.apply {
+            val message = "Hello! " + nameEditText.text
+            greetingTextView.text = message
+        }
+
     }
 }
