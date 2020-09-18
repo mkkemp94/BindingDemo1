@@ -6,23 +6,33 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
+import com.anushka.bindingdemo1.databinding.ActivityMainBinding
 
+/**
+ *
+ * To use data binding:
+ *
+ * 1. Enable data binding in Gradle
+ * 2. Wrap XML with layout tags
+ * 3. Construct a data binding object in the activity
+ * 4. Eliminate findViewById()
+ *
+ */
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val button = findViewById<Button>(R.id.submit_button)
-        button.setOnClickListener {
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.submitButton.setOnClickListener {
             displayGreeting()
         }
     }
 
     private fun displayGreeting() {
-        val messageView = findViewById<TextView>(R.id.greeting_text_view)
-        val nameText = findViewById<EditText>(R.id.name_edit_text)
-
-        val message = "Hello! "+ nameText.text
-        messageView.text = message
+        val message = "Hello! " + binding.nameEditText.text
+        binding.greetingTextView.text = message
     }
 }
