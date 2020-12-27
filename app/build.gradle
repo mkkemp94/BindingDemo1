@@ -21,8 +21,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding { // for gradle version 4.0+ use buildFeatures {
-        enabled = true // for gradle version 4.0+ use dataBinding = true
+    buildFeatures { // for gradle version 4.0+ use buildFeatures {
+        viewBinding = true // for gradle version 4.0+ use dataBinding = true
     }
 }
 
